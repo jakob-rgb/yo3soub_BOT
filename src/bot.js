@@ -10,23 +10,22 @@ const client = new Client({
      ]
 });
 client.on('ready', (c) => {
-    console.log('${c.user.tag} is online');
-
-
+    console.log(`${c.user.tag} is online`);
 });
+
+const wi = 'where';
+
 client.on('messageCreate', (message) => {
-    if(message.content === 'where?' && Math.random() < 0.5){
+    if (message.author.bot) return;
+
+    const content = message.content.toLowerCase();
+
+    if (content.includes(wi)) {
         message.reply('fi tirmtik!');
-    }
-    else if(message.content === 'win?' && Math.random() < 0.5){
-        message.reply('fi tirmtik!');
-    }
-    else if(message.content === 'where do we meet?' && Math.random() < 0.5){
-        message.reply('fi tirmtik!');
-    }
-    else if(message.content === 'windows'){
-        message.reply('linux 5ir ya kibdi !');
+    } else if (content === 'windows') {
+        message.reply('linux 5ir y a kibdi !');
     }
 });
+
 client.login(process.env.TOKEN);
 
